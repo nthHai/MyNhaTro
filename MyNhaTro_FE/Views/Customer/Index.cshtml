@@ -1,0 +1,82 @@
+﻿@model List<CustomerModel>
+@{
+    Layout = "_Layout";
+}
+<section>
+<div class="container p-4 border">
+    <div class="row pb-2">
+        <div class=" col">
+            <h1 class="text-primary">Danh sách khách hàng</h1>
+        </div>
+
+        <div class=" col text-end p1-1">
+            <a asp-controller="Customer" asp-action="Create" class="btn btn-primary">Thêm khách hàng</a>
+        </div>
+    </div>
+        <div class="tbl-wrapper">
+        <div class="tbl-header">
+            <table cellpadding="0" cellspacing="0" border="0">
+                <thead>
+                    <tr>
+                        <!--<th>@Html.DisplayNameFor(model => model.First().Id)</th> -->
+                        <th>@Html.DisplayNameFor(model => model.First().CustomerCode)</th>
+                        <th>@Html.DisplayNameFor(model => model.First().FirstName)</th>
+                        <th>@Html.DisplayNameFor(model => model.First().LastName)</th>
+                        <th>@Html.DisplayNameFor(model => model.First().IdentifyNumber)</th>
+                        <th>@Html.DisplayNameFor(model => model.First().MobilePhone)</th>
+                        <th>Chức năng</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+
+        <div class="tbl-content">
+            <table cellpadding="0" cellspacing="0" border="0">
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr onclick="selectRow(this)">
+                            <!-- Ẩn giá trị ID trong một thẻ input hidden -->
+                            <td style="display:none;">
+                                <input type="hidden" value="@item.Id" />
+                            </td>
+
+                            <!--<td>@item.Id</td> -->
+                            <td>@item.CustomerCode</td>
+                            <td>@item.FirstName</td>
+                            <td>@item.LastName</td>
+                            <td>@item.IdentifyNumber</td>
+                            <td>@item.MobilePhone</td>
+                            <td>
+                                <a href="javascript:void(0)" onclick="editCustomer(@item.Id)">Sửa</a> |
+                                <a href="/Customer/Delete/@item.Id">Xóa</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        </div>
+    </section>
+   
+
+    <script>
+        $(window).on("load resize", function () {
+            var scrollWidth = $('.tbl-content').width() - $('.tbl-content table').width();
+            $('.tbl-header').css({ 'padding-right': scrollWidth });
+        }).resize();
+
+        function selectRow(row) {
+            // Xóa lớp 'selected-row' khỏi tất cả các dòng khác
+            document.querySelectorAll('.selected-row').forEach(function (el) {
+                el.classList.remove('selected-row');
+            });
+
+            // Thêm lớp 'selected-row' vào dòng được chọn
+            row.classList.add('selected-row');
+        }
+    </script>
+</div>
+
+
+

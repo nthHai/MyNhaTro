@@ -1,0 +1,80 @@
+﻿@model CustomerModel
+
+
+<form asp-action="CreateCustomer" method="post">
+    <br />
+    <div class="container border p-3">
+        <h1 class="text-primary">Thêm mới khách hàng</h1>
+
+        <hr/>
+        <div class="row">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="col-2">
+                <label asp-for="CustomerCode" class="control-label pt-2" style="font-size:14px;"></label>
+            </div>
+            <div class="col-10 pb-3">
+                <input asp-for="CustomerCode" class="form-control" />
+                <span asp-validation-for="CustomerCode" class="text-danger"></span>
+            </div>
+
+            <div class="col-2">
+                <label asp-for="FirstName" class="control-label pt-2" style="font-size:14px;"></label>
+            </div>
+            <div class="col-10 pb-3">
+                <input asp-for="FirstName" class="form-control" />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+
+            <div class="col-2">
+                <label asp-for="LastName" class="control-label pt-2" style="font-size:14px;"></label>
+            </div>
+            <div class="col-10 pb-3">
+                <input asp-for="LastName" class="form-control" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+
+            <div class="col-2">
+                <label asp-for="DayOfBirth" class="control-label pt-2" style="font-size:14px;"></label>
+            </div>
+            <div class="col-10 pb-3">
+                <input asp-for="DayOfBirth" class="form-control" />
+                <span asp-validation-for="DayOfBirth" class="text-danger"></span>
+            </div>
+            <br />
+
+            <div class="col-2">
+                <label asp-for="IdentifyNumber" class="control-label pt-2" style="font-size:14px;"></label>
+            </div>
+            <div class="col-10 pb-3">
+                <input asp-for="IdentifyNumber" class="form-control" />
+                <span asp-validation-for="IdentifyNumber" class="text-danger"></span>
+            </div>
+
+            <div class="col-2">
+                <label asp-for="Ngaycap" class="control-label pt-2" style="font-size:14px;"></label>
+            </div>
+            <div class="col-10 pb-3">
+                <input asp-for="Ngaycap" class="form-control" />
+                <span asp-validation-for="Ngaycap" class="text-danger"></span>
+            </div>
+
+
+
+
+
+            <br />
+
+            <div class="col-5">
+                <a asp-action="Index" asp-controller="Customer" class="btn btn-primary form-control">Quay lại</a>
+                    
+            </div>
+            <div class="col-5">
+                <input type="submit" value="Lưu" class="btn btn-success form-control" />
+            </div>
+
+        </div>
+    </div>
+
+</form>
+
+
