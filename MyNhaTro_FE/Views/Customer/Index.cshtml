@@ -2,11 +2,13 @@
 @{
     Layout = "_Layout";
 }
-<section>
+
+
 <div class="container p-4 border">
     <div class="row pb-2">
+       
         <div class=" col">
-            <h1 class="text-primary">Danh sách khách hàng</h1>
+           <h1>Danh sách khách hàng</h1>
         </div>
 
         <div class=" col text-end p1-1">
@@ -15,7 +17,7 @@
     </div>
         <div class="tbl-wrapper">
         <div class="tbl-header">
-            <table cellpadding="0" cellspacing="0" border="0">
+            <table>
                 <thead>
                     <tr>
                         <!--<th>@Html.DisplayNameFor(model => model.First().Id)</th> -->
@@ -31,7 +33,7 @@
         </div>
 
         <div class="tbl-content">
-            <table cellpadding="0" cellspacing="0" border="0">
+            <table>
                 <tbody>
                     @foreach (var item in Model)
                     {
@@ -57,7 +59,7 @@
             </table>
         </div>
         </div>
-    </section>
+
    
 
     <script>
