@@ -6,6 +6,8 @@ using System.Text;
 using System.Net.Http.Headers;
 using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.Blazor;
 using MyNhaTro.Data;
+using X.PagedList;
+using X.PagedList.Extensions;
 
 namespace MyNhaTro_FE.Controllers 
 {
@@ -16,9 +18,11 @@ namespace MyNhaTro_FE.Controllers
         private string baseURL = "https://localhost:7155/";
 
         // Lấy danh sách khách hàng
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int? page=1)
         {
-            
+            int pageSize = 20; // Số lượng khách hàng mỗi trang
+            int pageNumber = (page ?? 1); // Nếu không có số trang thì mặc định là trang 1
+
             List<CustomerModel> lstCustomers = new List<CustomerModel>();
 
             using (var _httpClient = new HttpClient() )
@@ -40,8 +44,10 @@ namespace MyNhaTro_FE.Controllers
                     return View("ErrorPage");
                 }
             }
+            // Phân trang danh sách khách hàng
+            var pagedCustomers = lstCustomers.ToPagedList(pageNumber, pageSize);
 
-            return View(lstCustomers);
+            return View(pagedCustomers);
 
          }
 

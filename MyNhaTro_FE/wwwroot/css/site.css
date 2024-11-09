@@ -1,4 +1,5 @@
-﻿.tbl-wrapper {
+﻿
+.tbl-wrapper {
     width: 100%;
 }
 
@@ -17,7 +18,7 @@ table {
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     margin: auto;
     margin-top: 0px;
-    margin-bottom: 0px;
+    margin-bottom: 20px;
 }
     table th {
         background-color: #ff9800;
@@ -43,9 +44,63 @@ table {
         border-bottom: 1px solid #ccc;
         font-weight: bold;
     }
+/*ĐỊNH DẠNG KIỂU PHÂN TRANG*/
+/* Container để canh giữa */
+.pagination-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
 
+    /* Kiểu cho danh sách phân trang */
+    .pagination-container .pagination {
+        display: flex;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
 
+        /* Kiểu cho từng nút */
+        .pagination-container .pagination li a {
+            display: block;
+            padding: 10px 15px;
+            color: #007bff;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 15px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.15);
+        }
 
+            /* Hiệu ứng hover */
+            .pagination-container .pagination li a:hover {
+                background: linear-gradient(135deg, #007bff, #0056b3);
+                color: white;
+                border-color: #007bff;
+                box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25);
+                transform: translateY(-2px);
+            }
+
+        /* Kiểu cho nút trang hiện tại */
+        .pagination-container .pagination li.active a {
+            background-color: #007bff !important; /* Nền màu xanh */
+            color: white !important; /* Chữ màu trắng */
+            font-weight: bold !important; /* Chữ đậm */
+            border: 1px solid #007bff !important; /* Đường viền xanh */
+            padding: 12px 20px !important; /* Tăng độ rộng nút */
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3) !important; /* Đổ bóng */
+        }
+        
+        /* Kiểu cho các nút bị disable */
+        .pagination-container .pagination li.disabled a {
+            color: #b0b0b0;
+            background: #f0f0f0;
+            border: 1px solid #ddd;
+            pointer-events: none;
+        }
+/*KẾT THÚC PHÂN TRANG*/
 
 
 

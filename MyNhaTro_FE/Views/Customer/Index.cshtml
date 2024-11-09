@@ -1,7 +1,7 @@
-﻿@model List<CustomerModel>
-@{
-    Layout = "_Layout";
-}
+﻿@model X.PagedList.IPagedList<CustomerModel>  //model List<CustomerModel>
+
+@using X.PagedList.Mvc
+@using X.PagedList.Mvc.Core
 
 
 <div class="container p-4 border">
@@ -16,50 +16,68 @@
         </div>
     </div>
         <div class="tbl-wrapper">
-        <div class="tbl-header">
-            <table>
-                <thead>
-                    <tr>
-                        <!--<th>@Html.DisplayNameFor(model => model.First().Id)</th> -->
-                        <th>@Html.DisplayNameFor(model => model.First().CustomerCode)</th>
-                        <th>@Html.DisplayNameFor(model => model.First().FirstName)</th>
-                        <th>@Html.DisplayNameFor(model => model.First().LastName)</th>
-                        <th>@Html.DisplayNameFor(model => model.First().IdentifyNumber)</th>
-                        <th>@Html.DisplayNameFor(model => model.First().MobilePhone)</th>
-                        <th>Chức năng</th>
-                    </tr>
-                </thead>
-            </table>
-        </div>
-
-        <div class="tbl-content">
-            <table>
-                <tbody>
-                    @foreach (var item in Model)
-                    {
-                        <tr onclick="selectRow(this)">
-                            <!-- Ẩn giá trị ID trong một thẻ input hidden -->
-                            <td style="display:none;">
-                                <input type="hidden" value="@item.Id" />
-                            </td>
-
-                            <!--<td>@item.Id</td> -->
-                            <td>@item.CustomerCode</td>
-                            <td>@item.FirstName</td>
-                            <td>@item.LastName</td>
-                            <td>@item.IdentifyNumber</td>
-                            <td>@item.MobilePhone</td>
-                            <td>
-                                <a href="javascript:void(0)" onclick="editCustomer(@item.Id)">Sửa</a> |
-                                <a href="/Customer/Delete/@item.Id">Xóa</a>
-                            </td>
+            <div class="tbl-header">
+                <table>
+                    <thead>
+                        <tr>
+                            <!--<th>@Html.DisplayNameFor(model => model.First().Id)</th> -->
+                            <th>@Html.DisplayNameFor(model => model.First().CustomerCode)</th>
+                            <th>@Html.DisplayNameFor(model => model.First().FirstName)</th>
+                            <th>@Html.DisplayNameFor(model => model.First().LastName)</th>
+                            <th>@Html.DisplayNameFor(model => model.First().IdentifyNumber)</th>
+                            <th>@Html.DisplayNameFor(model => model.First().MobilePhone)</th>
+                            <th>Chức năng</th>
                         </tr>
-                    }
-                </tbody>
-            </table>
-        </div>
+                    </thead>
+                </table>
+            </div>
+
+            <div class="tbl-content">
+                <table>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr onclick="selectRow(this)">
+                                <!-- Ẩn giá trị ID trong một thẻ input hidden -->
+                                <td style="display:none;">
+                                    <input type="hidden" value="@item.Id" />
+                                </td>
+
+                                <!--<td>@item.Id</td> -->
+                                <td>@item.CustomerCode</td>
+                                <td>@item.FirstName</td>
+                                <td>@item.LastName</td>
+                                <td>@item.IdentifyNumber</td>
+                                <td>@item.MobilePhone</td>
+                                <td>
+                                    <a href="javascript:void(0)" onclick="editCustomer(@item.Id)">Sửa</a> |
+                                    <a href="/Customer/Delete/@item.Id">Xóa</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
         </div>
 
+        <div class="pagination-container">
+            <ul>
+                @Html.PagedListPager(Model, page => Url.Action("Index", "Customer", new { page=page }),
+                         new PagedListRenderOptions
+                            {
+                                DisplayLinkToPreviousPage = PagedListDisplayMode.IfNeeded,
+                                DisplayLinkToNextPage = PagedListDisplayMode.IfNeeded,
+                                DisplayLinkToFirstPage = PagedListDisplayMode.Always,
+                                DisplayLinkToLastPage = PagedListDisplayMode.Always,
+                                LinkToFirstPageFormat = "Đầu",
+                                LinkToPreviousPageFormat = "Trước",
+                                LinkToNextPageFormat = "Sau",
+                                LinkToLastPageFormat = "Cuối",
+                                MaximumPageNumbersToDisplay = 5,
+                                Display = PagedListDisplayMode.IfNeeded
+                            })
+            </ul>
+        </div>
    
 
     <script>
