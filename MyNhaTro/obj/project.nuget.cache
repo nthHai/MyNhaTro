@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "vyuo84I7Mqk=",
+  "dgSpecHash": "gjmtjazpR+A=",
   "success": true,
   "projectFilePath": "C:\\Users\\haing\\source\\repos\\MyNhaTro\\MyNhaTro\\MyNhaTro.csproj",
   "expectedPackageFiles": [
@@ -176,7 +176,9 @@
     "C:\\Users\\haing\\.nuget\\packages\\system.threading.channels\\7.0.0\\system.threading.channels.7.0.0.nupkg.sha512",
     "C:\\Users\\haing\\.nuget\\packages\\system.threading.tasks.dataflow\\7.0.0\\system.threading.tasks.dataflow.7.0.0.nupkg.sha512",
     "C:\\Users\\haing\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.4\\system.threading.tasks.extensions.4.5.4.nupkg.sha512",
-    "C:\\Users\\haing\\.nuget\\packages\\system.windows.extensions\\7.0.0\\system.windows.extensions.7.0.0.nupkg.sha512"
+    "C:\\Users\\haing\\.nuget\\packages\\system.windows.extensions\\7.0.0\\system.windows.extensions.7.0.0.nupkg.sha512",
+    "C:\\Users\\haing\\.nuget\\packages\\x.pagedlist\\10.5.7\\x.pagedlist.10.5.7.nupkg.sha512",
+    "C:\\Users\\haing\\.nuget\\packages\\x.pagedlist.mvc.core\\10.5.7\\x.pagedlist.mvc.core.10.5.7.nupkg.sha512"
   ],
   "logs": []
 }

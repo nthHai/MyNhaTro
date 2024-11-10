@@ -23,3 +23,9 @@ C:\Users\haing\source\repos\MyNhaTro\MyNhaTroShared\obj\Debug\net8.0\refint\MyNh
 C:\Users\haing\source\repos\MyNhaTro\MyNhaTroShared\obj\Debug\net8.0\MyNhaTroShared.pdb
 C:\Users\haing\source\repos\MyNhaTro\MyNhaTroShared\obj\Debug\net8.0\MyNhaTroShared.genruntimeconfig.cache
 C:\Users\haing\source\repos\MyNhaTro\MyNhaTroShared\obj\Debug\net8.0\ref\MyNhaTroShared.dll
+C:\Users\haing\source\repos\MyNhaTro\MyNhaTroShared\bin\Debug\net8.0\X.PagedList.dll
+C:\Users\haing\source\repos\MyNhaTro\MyNhaTroShared\bin\Debug\net8.0\X.PagedList.Mvc.Core.dll
+C:\Users\haing\source\repos\MyNhaTro\MyNhaTroShared\obj\Debug\net8.0\MyNhaTroShared.csproj.AssemblyReference.cache
+C:\Users\haing\source\repos\MyNhaTro\MyNhaTroShared\obj\Debug\net8.0\MyNhaTroShared.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\haing\source\repos\MyNhaTro\MyNhaTroShared\obj\Debug\net8.0\MyNhaTroShared.sourcelink.json
+C:\Users\haing\source\repos\MyNhaTro\MyNhaTroShared\obj\Debug\net8.0\MyNhaTro.1B5B0E83.Up2Date

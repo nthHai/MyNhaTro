@@ -12,26 +12,31 @@ namespace MyNhaTro.Models
         [Column("id")]
         public int Id { get; set; }
 
+        [Required(ErrorMessage = "Mã khách hàng là bắt buộc")]
         [DisplayName("Mã khách hàng")]
         [Column("customer_code")]
         [StringLength(20)]
         public string CustomerCode { get; set; } = null!;
 
+        [Required(ErrorMessage = "Vui lòng nhập Họ đệm.")]
         [DisplayName("Họ đệm")]
         [Column("first_name")]
         [StringLength(100)]
         public string? FirstName { get; set; }
 
+        [Required(ErrorMessage = "Vui lòng nhập Tên.")]
         [DisplayName("Tên")]
         [Column("last_name")]
         [StringLength(20)]
         public string? LastName { get; set; }
 
+        [Required(ErrorMessage = "Vui lòng nhập Ngày sinh.")]
         [DisplayName("Ngày sinh")]
         [DataType(DataType.Date)]
         [Column("day_of_birth")]
         public DateOnly? DayOfBirth { get; set; }
 
+        [Required(ErrorMessage = "Vui lòng nhập Số định danh.")]
         [DisplayName("Số định danh")]
         [Column("identify_number")]
         [StringLength(20)]
@@ -57,6 +62,7 @@ namespace MyNhaTro.Models
         [StringLength(20)]
         public string? MobilePhone { get; set; }
 
+        [Required(ErrorMessage = "Vui lòng nhập Địa chỉ thường trú.")]
         [DisplayName("Thường trú")]
         [Column("permanent_address")]
         [StringLength(200)]

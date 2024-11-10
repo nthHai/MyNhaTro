@@ -105,7 +105,7 @@ namespace MyNhaTro_FE.Controllers
                 _httpClient.DefaultRequestHeaders.Accept.Clear();
                 _httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-                HttpResponseMessage getData = await _httpClient.PutAsJsonAsync("", CustomerModel);
+                HttpResponseMessage getData = await _httpClient.PostAsJsonAsync("", CustomerModel);
 
                 if (getData.IsSuccessStatusCode)
                 {

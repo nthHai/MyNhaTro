@@ -12,7 +12,7 @@
         </div>
 
         <div class=" col text-end p1-1">
-            <a asp-controller="Customer" asp-action="Create" class="btn btn-primary">Thêm khách hàng</a>
+                <a asp-controller="Customer" asp-action="Create" class="btn btn-primary"><i class="bi bi-plus-square"></i>Thêm mới</a>
         </div>
     </div>
         <div class="tbl-wrapper">
@@ -49,9 +49,13 @@
                                 <td>@item.LastName</td>
                                 <td>@item.IdentifyNumber</td>
                                 <td>@item.MobilePhone</td>
-                                <td>
-                                    <a href="javascript:void(0)" onclick="editCustomer(@item.Id)">Sửa</a> |
-                                    <a href="/Customer/Delete/@item.Id">Xóa</a>
+                                <td class="text-end">
+                                    <a asp-controller="Customer" asp-action="Details" asp-route-Id="@item.Id"
+                                       class="btn btn-outline-success"><i class="bi bi-pencil-square"></i></a>
+                                    <a asp-controller="Customer" asp-action="Delete" asp-route-Id="@item.Id"
+                                       class="btn btn-outline-danger"><i class="bi bi-trash3"></i></a>
+                                    <!--<a href="javascript:void(0)" onclick="editCustomer(@item.Id)">Sửa</a> | -->
+                                    <!--<a href="/Customer/Delete/@item.Id">Xóa</a> -->
                                 </td>
                             </tr>
                         }

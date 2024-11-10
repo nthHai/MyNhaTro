@@ -103,6 +103,9 @@ table {
 /*KẾT THÚC PHÂN TRANG*/
 
 
+.btn-primary i {
+    margin-right: 5px; /* Điều chỉnh giá trị để có khoảng trắng mong muốn */
+}
 
 h1 {
     font-size: 30px;

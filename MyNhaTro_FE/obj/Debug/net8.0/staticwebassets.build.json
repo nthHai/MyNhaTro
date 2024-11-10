@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "9w/6/vyQLhjt82m+7cnxIrm6UptDiCAsxMtS6VCir54=",
+  "Hash": "obQKUnzkUALt855olMpj81LNiaaiaTvfxxjXpmORKbA=",
   "Source": "MyNhaTro_FE",
   "BasePath": "_content/MyNhaTro_FE",
   "Mode": "Default",
@@ -30,6 +30,13 @@
     }
   ],
   "DiscoveryPatterns": [
+    {
+      "Name": "MyNhaTro\\wwwroot",
+      "Source": "MyNhaTro",
+      "ContentRoot": "C:\\Users\\haing\\source\\repos\\MyNhaTro\\MyNhaTro\\wwwroot\\",
+      "BasePath": "_content/MyNhaTro",
+      "Pattern": "**"
+    },
     {
       "Name": "MyNhaTro_FE\\wwwroot",
       "Source": "MyNhaTro_FE",

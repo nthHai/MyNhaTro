@@ -272,3 +272,7 @@ C:\Users\haing\source\repos\MyNhaTro\MyNhaTro\bin\Debug\net8.0\MyNhaTroShared.ru
 C:\Users\haing\source\repos\MyNhaTro\MyNhaTro\bin\Debug\net8.0\MyNhaTroShared.exe
 C:\Users\haing\source\repos\MyNhaTro\MyNhaTro\bin\Debug\net8.0\MyNhaTroShared.dll
 C:\Users\haing\source\repos\MyNhaTro\MyNhaTro\bin\Debug\net8.0\MyNhaTroShared.pdb
+C:\Users\haing\source\repos\MyNhaTro\MyNhaTro\bin\Debug\net8.0\MyNhaTro.staticwebassets.runtime.json
+C:\Users\haing\source\repos\MyNhaTro\MyNhaTro\obj\Debug\net8.0\MyNhaTro.sourcelink.json
+C:\Users\haing\source\repos\MyNhaTro\MyNhaTro\bin\Debug\net8.0\X.PagedList.dll
+C:\Users\haing\source\repos\MyNhaTro\MyNhaTro\bin\Debug\net8.0\X.PagedList.Mvc.Core.dll

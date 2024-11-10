@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "85JgK7rifUln8ZQIuxIAmFEoaSsqCoR8t3Ei3HhmjQA=",
+  "Hash": "fHuVfG05VNtJa6yeTZ+RaltPXX0wAxz49/cCeCThqJ0=",
   "Source": "MyNhaTro",
   "BasePath": "_content/MyNhaTro",
   "Mode": "Default",
@@ -18,6 +18,14 @@
       "AdditionalBuildPropertiesToRemove": "WebPublishProfileFile;TargetFramework"
     }
   ],
-  "DiscoveryPatterns": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "MyNhaTro\\wwwroot",
+      "Source": "MyNhaTro",
+      "ContentRoot": "C:\\Users\\haing\\source\\repos\\MyNhaTro\\MyNhaTro\\wwwroot\\",
+      "BasePath": "_content/MyNhaTro",
+      "Pattern": "**"
+    }
+  ],
   "Assets": []
 }

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MyNhaTro_FE")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+aff7f17675d5b85b71d06ac2ba0b533427465aa5")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1801b98168ecb7164ea839c777279e77b9b17396")]
 [assembly: System.Reflection.AssemblyProductAttribute("MyNhaTro_FE")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MyNhaTro_FE")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
