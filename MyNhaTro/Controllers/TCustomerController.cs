@@ -18,6 +18,7 @@ namespace MyNhaTro.Controllers
             _customerRepository = repo;
         }
 
+
         [HttpGet]
         public async Task<IActionResult> GetAllCustomers()
         {
@@ -75,6 +76,21 @@ namespace MyNhaTro.Controllers
         {
             await _customerRepository.DeleteCustomersAsync(id);
             return Ok();
+        }
+
+        // API để lấy mã khách hàng tự động từ stored procedure
+        [HttpGet("GetCustomerCode")]
+        public async Task<IActionResult> GetCustomerCode()
+        {
+            try
+            {
+                var customerCode = await _customerRepository.GetCustomerCodeAsync();
+                return Ok(customerCode);  // Trả về mã khách hàng
+            }
+            catch (Exception ex)
+            {
+                return BadRequest($"Lỗi khi tạo mã khách hàng: {ex.Message}");
+            }
         }
     }
 }

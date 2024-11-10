@@ -15,5 +15,7 @@ namespace MyNhaTro.Repositories
         public Task UpdateCustomersAsync(int id, CustomerModel model);
         //Xóa
         public Task DeleteCustomersAsync(int id);
+
+        Task<string> GetCustomerCodeAsync();  // Phương thức để lấy mã khách hàng
     }
 }

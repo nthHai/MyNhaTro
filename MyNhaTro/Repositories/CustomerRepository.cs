@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using MyNhaTro.Data;
 using MyNhaTro.Models;
+using System.Runtime.CompilerServices;
 
 namespace MyNhaTro.Repositories
 {
@@ -59,6 +60,31 @@ namespace MyNhaTro.Repositories
             {
                 _context.Customers.Remove(deleteCustomer);
                 await _context.SaveChangesAsync(); //Lưu lại
+            }
+        }
+
+        // Phương thức gọi stored procedure để lấy mã khách hàng
+        public async Task<string> GetCustomerCodeAsync()
+        {
+            try
+            {
+                using (var connection = _context.Database.GetDbConnection())
+                {
+                    await connection.OpenAsync();
+
+                    using (var command = connection.CreateCommand())
+                    {
+                        command.CommandText = "GetCustomerCode";  // Tên của stored procedure
+                        command.CommandType = System.Data.CommandType.StoredProcedure;
+
+                        var result = await command.ExecuteScalarAsync();
+                        return result?.ToString();  // Trả về mã khách hàng hoặc null nếu không có kết quả
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Lỗi tạo mã khách hàng: " + ex.Message);
             }
         }
 

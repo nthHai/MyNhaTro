@@ -102,10 +102,34 @@ table {
         }
 /*KẾT THÚC PHÂN TRANG*/
 
-
-.btn-primary i {
-    margin-right: 5px; /* Điều chỉnh giá trị để có khoảng trắng mong muốn */
+/*Cài đặt form nhập liệu*/
+.form-control {
+    border-radius: 10px;
+    padding: 8px;
+    font-size: 16px;
+    transition: all 0.3s ease;
 }
+
+.form-control:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.form-label {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.text-danger {
+    font-size: 12px;
+}
+/*Kết thúc cài đặt form*/
+
+/*Cấu hình nút nhấn chữ và icon cách ra*/
+.btn-primary i {
+    margin-right: 10px; /* Điều chỉnh giá trị để có khoảng trắng mong muốn */
+}
+
 
 h1 {
     font-size: 30px;
