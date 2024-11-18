@@ -42,6 +42,9 @@ builder.Services.AddAutoMapper(typeof(Program));
 builder.Services.AddScoped<ICustomerRepository,CustomerRepository>();
 builder.Services.AddScoped<IAccountRepository, AccountRepository>();
 
+
+
+
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;

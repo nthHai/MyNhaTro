@@ -79,6 +79,7 @@ namespace MyNhaTro.Controllers
         }
 
         // API để lấy mã khách hàng tự động từ stored procedure
+        
         [HttpGet("GetCustomerCode")]
         public async Task<IActionResult> GetCustomerCode()
         {
@@ -92,5 +93,18 @@ namespace MyNhaTro.Controllers
                 return BadRequest($"Lỗi khi tạo mã khách hàng: {ex.Message}");
             }
         }
+
+        [HttpPost("InsertCustomer")]
+        public async Task<IActionResult> InsertCustomer(CustomerModel model)
+        {
+            var result = await _customerRepository.InsertCustomerAsync(model);
+
+            if (result <= 0)
+            {
+                return Ok("Thêm mới thành công.");
+            }
+            return BadRequest("Không thể thêm khách hàng");
+        }
+
     }
 }

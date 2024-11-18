@@ -29,3 +29,4 @@ C:\Users\haing\source\repos\MyNhaTro\MyNhaTroShared\obj\Debug\net8.0\MyNhaTroSha
 C:\Users\haing\source\repos\MyNhaTro\MyNhaTroShared\obj\Debug\net8.0\MyNhaTroShared.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\haing\source\repos\MyNhaTro\MyNhaTroShared\obj\Debug\net8.0\MyNhaTroShared.sourcelink.json
 C:\Users\haing\source\repos\MyNhaTro\MyNhaTroShared\obj\Debug\net8.0\MyNhaTro.1B5B0E83.Up2Date
+C:\Users\haing\source\repos\MyNhaTro\MyNhaTroShared\bin\Debug\net8.0\Dapper.dll

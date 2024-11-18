@@ -276,3 +276,4 @@ C:\Users\haing\source\repos\MyNhaTro\MyNhaTro\bin\Debug\net8.0\MyNhaTro.staticwe
 C:\Users\haing\source\repos\MyNhaTro\MyNhaTro\obj\Debug\net8.0\MyNhaTro.sourcelink.json
 C:\Users\haing\source\repos\MyNhaTro\MyNhaTro\bin\Debug\net8.0\X.PagedList.dll
 C:\Users\haing\source\repos\MyNhaTro\MyNhaTro\bin\Debug\net8.0\X.PagedList.Mvc.Core.dll
+C:\Users\haing\source\repos\MyNhaTro\MyNhaTro\bin\Debug\net8.0\Dapper.dll

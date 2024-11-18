@@ -1,4 +1,5 @@
-﻿using MyNhaTro.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using MyNhaTro.Data;
 using MyNhaTro.Models;
 
 namespace MyNhaTro.Repositories
@@ -17,5 +18,7 @@ namespace MyNhaTro.Repositories
         public Task DeleteCustomersAsync(int id);
 
         Task<string> GetCustomerCodeAsync();  // Phương thức để lấy mã khách hàng
+
+        Task<int> InsertCustomerAsync(CustomerModel CustomerModel);
     }
 }

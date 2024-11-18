@@ -18,14 +18,37 @@
         <div class="tbl-wrapper">
             <div class="tbl-header">
                 <table>
+                    <colgroup>
+                        <col style="width: 50px;"> <!-- Cột STT -->
+                        <col style="width: 100px;"> <!-- Cột Mã khách hàng -->
+                        <col style="width: 150px;"> <!-- Cột Họ -->
+                        <col style="width: 150px;"> <!-- Cột Tên -->
+                        <col style="width: 120px;"> <!-- Cột Ngày sinh -->
+                        <col style="width: 200px;"> <!-- Cột Số CMND -->
+                        <col style="width: 120px;"> <!-- Cột Số điện thoại -->
+                        <col style="width: 250px;"> <!-- Cột Địa chỉ -->
+                        <col style="width: 150px;"> <!-- Cột Nghề nghiệp -->
+                        <col style="width: 200px;"> <!-- Cột Nơi làm việc -->
+                        <col style="width: 120px;"> <!-- Cột Ngày tham gia -->
+                        <col style="width: 300px;"> <!-- Cột Mô tả -->
+                        <col style="width: 150px;"> <!-- Cột Chức năng -->
+                    </colgroup>
                     <thead>
                         <tr>
                             <!--<th>@Html.DisplayNameFor(model => model.First().Id)</th> -->
+                            <th>STT</th>
                             <th>@Html.DisplayNameFor(model => model.First().CustomerCode)</th>
                             <th>@Html.DisplayNameFor(model => model.First().FirstName)</th>
                             <th>@Html.DisplayNameFor(model => model.First().LastName)</th>
+                            <th>@Html.DisplayNameFor(model => model.First().DayOfBirth)</th>
                             <th>@Html.DisplayNameFor(model => model.First().IdentifyNumber)</th>
                             <th>@Html.DisplayNameFor(model => model.First().MobilePhone)</th>
+                            <th>@Html.DisplayNameFor(model => model.First().PermanentAddress)</th>
+                            <th>@Html.DisplayNameFor(model => model.First().JobName)</th>
+                            <th>@Html.DisplayNameFor(model => model.First().WorkPlace)</th>
+                            <th>@Html.DisplayNameFor(model => model.First().DateJoin)</th>
+                            <th>@Html.DisplayNameFor(model => model.First().Description)</th>
+
                             <th>Chức năng</th>
                         </tr>
                     </thead>
@@ -34,10 +57,29 @@
 
             <div class="tbl-content">
                 <table>
+                    <colgroup>
+                        <col style="width: 50px;"> <!-- Cột STT -->
+                        <col style="width: 100px;"> <!-- Cột Mã khách hàng -->
+                        <col style="width: 150px;"> <!-- Cột Họ -->
+                        <col style="width: 150px;"> <!-- Cột Tên -->
+                        <col style="width: 120px;"> <!-- Cột Ngày sinh -->
+                        <col style="width: 200px;"> <!-- Cột Số CMND -->
+                        <col style="width: 120px;"> <!-- Cột Số điện thoại -->
+                        <col style="width: 250px;"> <!-- Cột Địa chỉ -->
+                        <col style="width: 150px;"> <!-- Cột Nghề nghiệp -->
+                        <col style="width: 200px;"> <!-- Cột Nơi làm việc -->
+                        <col style="width: 120px;"> <!-- Cột Ngày tham gia -->
+                        <col style="width: 300px;"> <!-- Cột Mô tả -->
+                        <col style="width: 150px;"> <!-- Cột Chức năng -->
+                    </colgroup>
                     <tbody>
+                        @{
+                            int stt = 1; // Bắt đầu từ 1
+                        }
                         @foreach (var item in Model)
                         {
                             <tr onclick="selectRow(this)">
+                                <td>@stt</td> <!-- Hiển thị STT -->
                                 <!-- Ẩn giá trị ID trong một thẻ input hidden -->
                                 <td style="display:none;">
                                     <input type="hidden" value="@item.Id" />
@@ -47,8 +89,15 @@
                                 <td>@item.CustomerCode</td>
                                 <td>@item.FirstName</td>
                                 <td>@item.LastName</td>
+                                <td>@item.DayOfBirth</td>
                                 <td>@item.IdentifyNumber</td>
                                 <td>@item.MobilePhone</td>
+                                <td>@item.PermanentAddress</td>
+                                <td>@item.JobName</td>
+                                <td>@item.WorkPlace</td>
+                                <td>@item.DateJoin</td>
+                                <td>@item.Description</td>
+
                                 <td class="text-end">
                                     <a asp-controller="Customer" asp-action="Details" asp-route-Id="@item.Id"
                                        class="btn btn-outline-success"><i class="bi bi-pencil-square"></i></a>
@@ -58,29 +107,33 @@
                                     <!--<a href="/Customer/Delete/@item.Id">Xóa</a> -->
                                 </td>
                             </tr>
+
+                            stt++; // Tăng STT sau mỗi dòng
                         }
                     </tbody>
                 </table>
             </div>
         </div>
 
-        <div class="pagination-container">
-            <ul>
-                @Html.PagedListPager(Model, page => Url.Action("Index", "Customer", new { page=page }),
-                         new PagedListRenderOptions
-                            {
-                                DisplayLinkToPreviousPage = PagedListDisplayMode.IfNeeded,
-                                DisplayLinkToNextPage = PagedListDisplayMode.IfNeeded,
-                                DisplayLinkToFirstPage = PagedListDisplayMode.Always,
-                                DisplayLinkToLastPage = PagedListDisplayMode.Always,
-                                LinkToFirstPageFormat = "Đầu",
-                                LinkToPreviousPageFormat = "Trước",
-                                LinkToNextPageFormat = "Sau",
-                                LinkToLastPageFormat = "Cuối",
-                                MaximumPageNumbersToDisplay = 5,
-                                Display = PagedListDisplayMode.IfNeeded
-                            })
-            </ul>
+        <div>
+        @Html.PagedListPager(Model,
+                 page => Url.Action("Index", "Customer", new { page = page }),
+                 new PagedListRenderOptions
+                    {
+                        DisplayLinkToPreviousPage = PagedListDisplayMode.IfNeeded,
+                        DisplayLinkToNextPage = PagedListDisplayMode.IfNeeded,
+                        DisplayLinkToFirstPage = PagedListDisplayMode.Always,
+                        DisplayLinkToLastPage = PagedListDisplayMode.Always,
+                        LinkToFirstPageFormat = "Đầu",
+                        LinkToPreviousPageFormat = "Trước",
+                        LinkToNextPageFormat = "Sau",
+                        LinkToLastPageFormat = "Cuối",
+                        MaximumPageNumbersToDisplay = 5,
+                        Display = PagedListDisplayMode.IfNeeded,
+                        UlElementClasses = new[] { "pagination", "pagination-lg" }, // Thêm lớp pagination-lg
+                        LiElementClasses = new[] { "page-item" }, // Thêm lớp page-item cho <li>
+                        PageClasses = new[] { "page-link" } // Thêm lớp page-link cho <a>
+                    })
         </div>
    
 
@@ -99,6 +152,7 @@
             // Thêm lớp 'selected-row' vào dòng được chọn
             row.classList.add('selected-row');
         }
+            
     </script>
 </div>
 

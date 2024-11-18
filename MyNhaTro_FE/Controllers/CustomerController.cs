@@ -23,7 +23,7 @@ namespace MyNhaTro_FE.Controllers
         // Lấy danh sách khách hàng
         public async Task<IActionResult> Index(int? page=1)
         {
-            int pageSize = 20; // Số lượng khách hàng mỗi trang
+            int pageSize = 15; // Số lượng khách hàng mỗi trang
             int pageNumber = (page ?? 1); // Nếu không có số trang thì mặc định là trang 1
 
             List<CustomerModel> lstCustomers = new List<CustomerModel>();
@@ -138,7 +138,7 @@ namespace MyNhaTro_FE.Controllers
                 _httpClient.DefaultRequestHeaders.Accept.Clear();
                 _httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-                HttpResponseMessage getData = await _httpClient.PostAsJsonAsync("", CustomerModel);
+                HttpResponseMessage getData = await _httpClient.PostAsJsonAsync("InsertCustomer", CustomerModel);
 
                 if (getData.IsSuccessStatusCode)
                 {

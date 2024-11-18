@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "gNnzCqU4Y3I=",
+  "dgSpecHash": "vJSYZPK423s=",
   "success": true,
   "projectFilePath": "C:\\Users\\haing\\source\\repos\\MyNhaTro\\MyNhaTroShared\\MyNhaTroShared.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\haing\\.nuget\\packages\\dapper\\2.1.35\\dapper.2.1.35.nupkg.sha512",
     "C:\\Users\\haing\\.nuget\\packages\\x.pagedlist\\10.5.7\\x.pagedlist.10.5.7.nupkg.sha512",
     "C:\\Users\\haing\\.nuget\\packages\\x.pagedlist.mvc.core\\10.5.7\\x.pagedlist.mvc.core.10.5.7.nupkg.sha512"
   ],

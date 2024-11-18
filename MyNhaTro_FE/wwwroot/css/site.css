@@ -1,6 +1,20 @@
 ﻿
+/* Nội dung chính */
+
+/* Định nghĩa Topbar */
+.topbar {
+    z-index: 10; /* Topbar luôn nổi trên tất cả */
+}
+.container {
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    max-width: fit-content;
+}
+
 .tbl-wrapper {
     width: 100%;
+    overflow-x: auto;
 }
 
 
@@ -8,10 +22,9 @@ table {
     width: 100%;
     table-layout: fixed;
     border-collapse: collapse;
-    width: 100%;
     color: #333;
-    font-family: 'Verdana';
-    font-size: 14px;
+    font-family: Tahoma;
+    font-size: 11.5px;
     text-align: left;
     border-radius: 10px;
     overflow: hidden;
@@ -19,9 +32,27 @@ table {
     margin: auto;
     margin-top: 0px;
     margin-bottom: 20px;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
+    /* Áp dụng font riêng cho biểu tượng FontAwesome */
+    table i {
+        font-family: 'FontAwesome'; /* Chỉ áp dụng FontAwesome cho biểu tượng */
+        font-size: 16px; /* Tùy chỉnh kích thước biểu tượng */
+    }
+
+        /* Ví dụ về chỉnh sửa kích thước cho các biểu tượng lớn hơn */
+    table i.fa-lg {
+            font-size: 1.33333333em;
+    }
+
+    table i.fa-2x {
+            font-size: 2em;
+    }
+
     table th {
-        background-color: #ff9800;
+        background-color: #007bff;
         color: #fff;
         font-weight: bold;
         padding: 10px;
@@ -29,6 +60,7 @@ table {
         letter-spacing: 1px;
         border-top: 1px solid #fff;
         border-bottom: 1px solid #ccc;
+       
     }
     table tr:nth-child(even) td {
         background-color: #f2f2f2;
@@ -44,62 +76,60 @@ table {
         border-bottom: 1px solid #ccc;
         font-weight: bold;
     }
+   
 /*ĐỊNH DẠNG KIỂU PHÂN TRANG*/
-/* Container để canh giữa */
-.pagination-container {
+.pagination-lg {
     display: flex;
     justify-content: center;
-    margin-top: 20px;
+    padding: 10px 0;
+    list-style: none;
+    background: #f9f9f9; /* Nền mờ nhạt */
+    border-radius: 12px;
 }
 
-    /* Kiểu cho danh sách phân trang */
-    .pagination-container .pagination {
-        display: flex;
-        list-style: none;
-        padding: 0;
-        margin: 0;
+    .pagination-lg .page-item {
+        margin: 0 5px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease; /* Hiệu ứng động */
     }
 
-        /* Kiểu cho từng nút */
-        .pagination-container .pagination li a {
+        .pagination-lg .page-item a {
             display: block;
             padding: 10px 15px;
+            font-size: 1.25rem;
             color: #007bff;
             background: white;
             border: 1px solid #ddd;
-            border-radius: 8px;
+            border-radius: 10px;
             text-decoration: none;
             transition: all 0.3s ease;
-            font-size: 15px;
-            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.15);
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.15); /* Đổ bóng nhẹ */
         }
 
-            /* Hiệu ứng hover */
-            .pagination-container .pagination li a:hover {
+            .pagination-lg .page-item a:hover {
                 background: linear-gradient(135deg, #007bff, #0056b3);
                 color: white;
                 border-color: #007bff;
-                box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25);
-                transform: translateY(-2px);
+                box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25); /* Tăng đổ bóng khi hover */
+                transform: translateY(-2px); /* Hiệu ứng nổi lên */
             }
 
-        /* Kiểu cho nút trang hiện tại */
-        .pagination-container .pagination li.active a {
-            background-color: #007bff !important; /* Nền màu xanh */
-            color: white !important; /* Chữ màu trắng */
-            font-weight: bold !important; /* Chữ đậm */
-            border: 1px solid #007bff !important; /* Đường viền xanh */
-            padding: 12px 20px !important; /* Tăng độ rộng nút */
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3) !important; /* Đổ bóng */
+        .pagination-lg .page-item.active a {
+            background: linear-gradient(135deg, #007bff, #0056b3); /* Hiệu ứng gradient */
+            color: white;
+            font-weight: bold;
+            border: 1px solid #007bff;
+            
+            padding: 12px 20px; /* Kích thước nút lớn hơn */
+            transform: scale(1.1); /* Phóng to nhẹ nút active */
         }
-        
-        /* Kiểu cho các nút bị disable */
-        .pagination-container .pagination li.disabled a {
+
+        .pagination-lg .page-item.disabled a {
             color: #b0b0b0;
             background: #f0f0f0;
             border: 1px solid #ddd;
             pointer-events: none;
         }
+
 /*KẾT THÚC PHÂN TRANG*/
 
 /*Cài đặt form nhập liệu*/
@@ -133,17 +163,18 @@ table {
 
 h1 {
     font-size: 30px;
-    font-family: 'Verdana';
-    color: blue;
+    font-family: 'Poppins', sans-serif;
     text-transform: uppercase;
     font-weight: bold;
     text-align: left;
     margin-bottom: 15px;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
-    
+
 
 td {
-    
     padding: 10px;
     text-align: left;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
@@ -151,10 +182,13 @@ td {
 }
 
 th {
-    background-color: rgba(255, 255, 255, 0.3);  
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.3);
     position: sticky;
-    top: 0px;
-    z-index: 2;
+    z-index: 3;
+}
+th, td {
+    word-wrap: break-word; /* Xuống dòng nếu nội dung dài */
 }
 /* for custom scrollbar for webkit browser*/
 .tbl-content {
@@ -162,32 +196,9 @@ th {
     width: fit-content;
     overflow-x: auto;
     overflow-y: auto;
-    
     border: 1px solid rgba(255, 255, 255, 0.3);
     
 }
-    ::-webkit-scrollbar {
-        width: 12px;
-    }
-
-   ::-webkit-scrollbar-track {
-        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-    }
-
-   ::-webkit-scrollbar-thumb {
-        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-    }
-
-
-/* demo styles 
-@import url(https://fonts.googleapis.com/css?family=Roboto:400,500,300,700);
-body {
-    background: -webkit-linear-gradient(left, #25c481, #25b7c4);
-    background: linear-gradient(to right, #25c481, #25b7c4);
-    font-family: 'Roboto', sans-serif;
-}
-*/
-
 
 .selected-row {
     background-color: #f1f1f1; /* Màu nền cho dòng đã chọn */
