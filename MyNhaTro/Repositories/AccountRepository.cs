@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
+using MyNhaTro.Contracts;
 using MyNhaTro.Data;
 using MyNhaTro.Models;
 using System.IdentityModel.Tokens.Jwt;

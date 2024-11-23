@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using MyNhaTro.Models;
 
-namespace MyNhaTro.Repositories
+namespace MyNhaTro.Contracts
 {
     public interface IAccountRepository
     {

@@ -1,5 +1,118 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@model CustomerModel
+
+
+<form class="fix_form" asp-action="UpdateCustomerDetails" method="post">
+    <!-- Trường ẩn để gửi ID -->
+    <input type="hidden" asp-for="Id" />
+    <br />
+    <div class="container p-3 border">
+        <h1 class="text-primary">Xem/Cập nhật thông tin khách hàng</h1>
+
+        <hr />
+        <div class="row">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <!--Ghép dòng-->
+            <div class="col-md-6 mb-4">
+                <label asp-for="CustomerCode" class="form-label"></label>
+                <input asp-for="CustomerCode" class="form-control" placeholder="Mã khách hàng" readonly/>
+            </div>
+
+            <div class="col-md-6 mb-4">
+                <label asp-for="DayOfBirth" class="form-label"></label>
+                <input asp-for="DayOfBirth" class="form-control" placeholder="Nhập ngày tháng năm sinh" />
+                <span asp-validation-for="DayOfBirth" class="text-danger"></span>
+            </div>
+
+            <div class="col-md-6 mb-4">
+                <label asp-for="FirstName" class="form-label"></label>
+                <input asp-for="FirstName" class="form-control" placeholder="Nhập Họ đệm" />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+
+            <div class="col-md-6 mb-4">
+                <label asp-for="LastName" class="form-label"></label>
+                <input asp-for="LastName" class="form-control" placeholder="Nhập Tên" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+
+
+            <div class="col-md-6 mb-4">
+                <label asp-for="IdentifyNumber" class="form-label"></label>
+                <input asp-for="IdentifyNumber" class="form-control" placeholder="Nhập số CCCD" />
+                <span asp-validation-for="IdentifyNumber" class="text-danger"></span>
+            </div>
+
+            <div class="col-md-6 mb-4">
+                <label asp-for="Ngaycap" class="form-label"></label>
+                <input asp-for="Ngaycap" class="form-control" placeholder="Nhập ngày cấp CCCD" />
+                <span asp-validation-for="Ngaycap" class="text-danger"></span>
+            </div>
+
+            <div class="col-md-6 mb-4">
+                <label asp-for="Noicap" class="form-label"></label>
+                <input asp-for="Noicap" class="form-control" placeholder="Nhập nơi cấp CCCD" />
+                <span asp-validation-for="Noicap" class="text-danger"></span>
+            </div>
+
+            <div class="col-md-6 mb-4">
+                <label asp-for="Phone" class="form-label"></label>
+                <input asp-for="Phone" class="form-control" placeholder="Nhập số điện thoại bàn" />
+            </div>
+
+            <div class="col-md-6 mb-4">
+                <label asp-for="MobilePhone" class="form-label"></label>
+                <input asp-for="MobilePhone" class="form-control" placeholder="Nhập số điện thoại di động" />
+                <span asp-validation-for="MobilePhone" class="text-danger"></span>
+            </div>
+
+            <div class="col-md-6 mb-4">
+                <label asp-for="DateJoin" class="form-label"></label>
+                <input asp-for="DateJoin" class="form-control" placeholder="Nhập ngày bắt đầu trọ" value="@(DateTime.Now.ToString("yyyy-MM-dd"))" />
+                <span asp-validation-for="DateJoin" class="text-danger"></span>
+            </div>
+
+            <div class="col-12 mb-4">
+                <label asp-for="PermanentAddress" class="form-label"></label>
+                <input asp-for="PermanentAddress" class="form-control" placeholder="Nhập địa chỉ thường trú" />
+                <span asp-validation-for="PermanentAddress" class="text-danger"></span>
+            </div>
+
+            <div class="col-md-6 mb-4">
+                <label asp-for="JobName" class="form-label"></label>
+                <input asp-for="JobName" class="form-control" placeholder="Nhập nghề nghiệp" />
+                <span asp-validation-for="JobName" class="text-danger"></span>
+            </div>
+
+            <div class="col-md-6 mb-4">
+                <label asp-for="WorkPlace" class="form-label"></label>
+                <input asp-for="WorkPlace" class="form-control" placeholder="Nhập nơi làm việc" />
+                <span asp-validation-for="WorkPlace" class="text-danger"></span>
+            </div>
+
+            <div class="col-12 mb-4">
+                <div class="form-floating">
+                    <textarea asp-for="Description" class="form-control" id="Description" placeholder="Mô tả"></textarea>
+                    <label for="Description">Mô tả</label>
+                </div>
+            </div>
+            <!--Ghép dòng-->
+
+            <br />
+            <div class="col-md-6 mb-4">
+                <a asp-action="Index" asp-controller="Customer" class="btn btn-primary form-control">Quay lại</a>
+
+            </div>
+            <div class="col-md-6 mb-4">
+                <input type="submit" value="Lưu" class="btn btn-success form-control" />
+            </div>
+
+        </div>
+    </div>
+
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
 }
+

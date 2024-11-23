@@ -1,8 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using MyNhaTro.Data;
 using MyNhaTro.Models;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
-namespace MyNhaTro.Repositories
+namespace MyNhaTro.Contracts
 {
     public interface ICustomerRepository
     {
@@ -19,6 +20,10 @@ namespace MyNhaTro.Repositories
 
         Task<string> GetCustomerCodeAsync();  // Phương thức để lấy mã khách hàng
 
-        Task<int> InsertCustomerAsync(CustomerModel CustomerModel);
+        
+        Task<int> InsertCustomerAsync(CustomerModel CustomerModel); //Sử dụng Store Procedure
+        Task<int> UpdateCustomerDetailsAsync(int id, CustomerModel CustomerModel); //Sử dụng Store Procedure
+
+        Task<IEnumerable<CustomerModel>> GetSPTest();
     }
 }

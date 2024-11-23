@@ -7,6 +7,11 @@ using MyNhaTro.Data;
 using MyNhaTro.Repositories;
 using System.Text;
 using System.IO;
+using MyNhaTro.Contracts;
+using Dapper;
+using MyNhaTro.Helper;
+using MyNhaTro.Models;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -42,8 +47,13 @@ builder.Services.AddAutoMapper(typeof(Program));
 builder.Services.AddScoped<ICustomerRepository,CustomerRepository>();
 builder.Services.AddScoped<IAccountRepository, AccountRepository>();
 
-
-
+//Đăng ký TypeHandler
+SqlMapper.AddTypeHandler(new DateOnlyTypeHandler());
+SqlMapper.AddTypeHandler(new NullableDateOnlyTypeHandler());
+// Thiết lập ánh xạ tùy chỉnh trước khi thực hiện truy vấn
+SqlMapper.SetTypeMap(typeof(CustomerModel), new CustomPropertyTypeMap(typeof(CustomerModel),
+            (type, columnName) => type.GetProperty(columnName.ToPascalCase(), BindingFlags.Public | BindingFlags.Instance))
+);
 
 builder.Services.AddAuthentication(options =>
 {

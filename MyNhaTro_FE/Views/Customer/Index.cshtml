@@ -19,8 +19,9 @@
             <div class="tbl-header">
                 <table>
                     <colgroup>
+                        <col style="width: 120px;"> <!-- Cột Chức năng -->
                         <col style="width: 50px;"> <!-- Cột STT -->
-                        <col style="width: 100px;"> <!-- Cột Mã khách hàng -->
+                        <col style="width: 150px;"> <!-- Cột Mã khách hàng -->
                         <col style="width: 150px;"> <!-- Cột Họ -->
                         <col style="width: 150px;"> <!-- Cột Tên -->
                         <col style="width: 120px;"> <!-- Cột Ngày sinh -->
@@ -29,13 +30,14 @@
                         <col style="width: 250px;"> <!-- Cột Địa chỉ -->
                         <col style="width: 150px;"> <!-- Cột Nghề nghiệp -->
                         <col style="width: 200px;"> <!-- Cột Nơi làm việc -->
-                        <col style="width: 120px;"> <!-- Cột Ngày tham gia -->
+                        <col style="width: 150px;"> <!-- Cột Ngày tham gia -->
                         <col style="width: 300px;"> <!-- Cột Mô tả -->
-                        <col style="width: 150px;"> <!-- Cột Chức năng -->
+                       
                     </colgroup>
                     <thead>
                         <tr>
                             <!--<th>@Html.DisplayNameFor(model => model.First().Id)</th> -->
+                            <th style="text-align:center">Chức năng</th>
                             <th>STT</th>
                             <th>@Html.DisplayNameFor(model => model.First().CustomerCode)</th>
                             <th>@Html.DisplayNameFor(model => model.First().FirstName)</th>
@@ -48,8 +50,7 @@
                             <th>@Html.DisplayNameFor(model => model.First().WorkPlace)</th>
                             <th>@Html.DisplayNameFor(model => model.First().DateJoin)</th>
                             <th>@Html.DisplayNameFor(model => model.First().Description)</th>
-
-                            <th>Chức năng</th>
+                            
                         </tr>
                     </thead>
                 </table>
@@ -58,8 +59,10 @@
             <div class="tbl-content">
                 <table>
                     <colgroup>
+
+                        <col style="width: 120px;"> <!-- Cột Chức năng -->
                         <col style="width: 50px;"> <!-- Cột STT -->
-                        <col style="width: 100px;"> <!-- Cột Mã khách hàng -->
+                        <col style="width: 150px;"> <!-- Cột Mã khách hàng -->
                         <col style="width: 150px;"> <!-- Cột Họ -->
                         <col style="width: 150px;"> <!-- Cột Tên -->
                         <col style="width: 120px;"> <!-- Cột Ngày sinh -->
@@ -68,9 +71,9 @@
                         <col style="width: 250px;"> <!-- Cột Địa chỉ -->
                         <col style="width: 150px;"> <!-- Cột Nghề nghiệp -->
                         <col style="width: 200px;"> <!-- Cột Nơi làm việc -->
-                        <col style="width: 120px;"> <!-- Cột Ngày tham gia -->
+                        <col style="width: 150px;"> <!-- Cột Ngày tham gia -->
                         <col style="width: 300px;"> <!-- Cột Mô tả -->
-                        <col style="width: 150px;"> <!-- Cột Chức năng -->
+                        
                     </colgroup>
                     <tbody>
                         @{
@@ -79,6 +82,15 @@
                         @foreach (var item in Model)
                         {
                             <tr onclick="selectRow(this)">
+                                <td class="text-end" style="text-align:center">
+                                    <a asp-controller="Customer" asp-action="Details" asp-route-Id="@item.Id"
+                                       class="btn btn-outline-success"><i class="bi bi-pencil-square"></i></a>
+                                    <a asp-controller="Customer" asp-action="Delete" asp-route-Id="@item.Id"
+                                       class="btn btn-outline-danger"><i class="bi bi-trash3"></i></a>
+                                    <!--<a href="javascript:void(0)" onclick="editCustomer(@item.Id)">Sửa</a> | -->
+                                    <!--<a href="/Customer/Delete/@item.Id">Xóa</a> -->
+                                </td>
+
                                 <td>@stt</td> <!-- Hiển thị STT -->
                                 <!-- Ẩn giá trị ID trong một thẻ input hidden -->
                                 <td style="display:none;">
@@ -97,15 +109,6 @@
                                 <td>@item.WorkPlace</td>
                                 <td>@item.DateJoin</td>
                                 <td>@item.Description</td>
-
-                                <td class="text-end">
-                                    <a asp-controller="Customer" asp-action="Details" asp-route-Id="@item.Id"
-                                       class="btn btn-outline-success"><i class="bi bi-pencil-square"></i></a>
-                                    <a asp-controller="Customer" asp-action="Delete" asp-route-Id="@item.Id"
-                                       class="btn btn-outline-danger"><i class="bi bi-trash3"></i></a>
-                                    <!--<a href="javascript:void(0)" onclick="editCustomer(@item.Id)">Sửa</a> | -->
-                                    <!--<a href="/Customer/Delete/@item.Id">Xóa</a> -->
-                                </td>
                             </tr>
 
                             stt++; // Tăng STT sau mỗi dòng

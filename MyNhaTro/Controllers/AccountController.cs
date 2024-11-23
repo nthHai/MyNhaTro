@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using MyNhaTro.Contracts;
 using MyNhaTro.Models;
 using MyNhaTro.Repositories;
 

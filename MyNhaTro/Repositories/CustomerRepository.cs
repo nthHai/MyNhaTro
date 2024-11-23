@@ -8,8 +8,14 @@ using System.Reflection.Metadata;
 using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
 using Dapper;
-
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
+using MyNhaTro.Contracts;
+using NuGet.Protocol.Plugins;
+using Newtonsoft.Json.Linq;
+using MyNhaTro.Helper;
+using System.Reflection;
 namespace MyNhaTro.Repositories
+
 {
     public class CustomerRepository : ICustomerRepository
     {
@@ -57,7 +63,7 @@ namespace MyNhaTro.Repositories
                     parameters.Add("@date_join", customerModel.DateJoin.HasValue ? (object)customerModel.DateJoin.Value.ToDateTime(new TimeOnly()) : DBNull.Value);
                     parameters.Add("@description", customerModel.Description);
                     parameters.Add("@create_date", customerModel.CreateDate);
-
+                    parameters.Add("@crud_type_code", "INSERT");
                     // Thực thi stored procedure
                     var result = await connection.ExecuteAsync(
                         "cus.sp_customer_crud",  // Tên của stored procedure
@@ -73,6 +79,50 @@ namespace MyNhaTro.Repositories
                 throw new Exception("Lỗi khi gọi stored procedure: " + ex.Message);
             }
         }
+        public async Task<int> UpdateCustomerDetailsAsync(int id, CustomerModel customerModel)
+        {
+            try
+            {
+                // Sử dụng Dapper để gọi stored procedure
+                using (var connection = _context.Database.GetDbConnection())
+                {
+                    await connection.OpenAsync();
+
+                    var parameters = new DynamicParameters();
+                    parameters.Add("id", customerModel.Id);
+                    parameters.Add("@customer_code", customerModel.CustomerCode);
+                    parameters.Add("@first_name", customerModel.FirstName);
+                    parameters.Add("@last_name", customerModel.LastName);
+                    parameters.Add("@day_of_birth", customerModel.DayOfBirth.HasValue ? (object)customerModel.DayOfBirth.Value.ToDateTime(new TimeOnly()) : DBNull.Value);
+                    parameters.Add("@identify_number", customerModel.IdentifyNumber);
+                    parameters.Add("@ngaycap", customerModel.Ngaycap.HasValue ? (object)customerModel.Ngaycap.Value.ToDateTime(new TimeOnly()) : DBNull.Value);
+                    parameters.Add("@noicap", customerModel.Noicap);
+                    parameters.Add("@phone", customerModel.Phone);
+                    parameters.Add("@mobile_phone", customerModel.MobilePhone);
+                    parameters.Add("@permanent_address", customerModel.PermanentAddress);
+                    parameters.Add("@job_name", customerModel.JobName);
+                    parameters.Add("@work_place", customerModel.WorkPlace);
+                    parameters.Add("@date_join", customerModel.DateJoin.HasValue ? (object)customerModel.DateJoin.Value.ToDateTime(new TimeOnly()) : DBNull.Value);
+                    parameters.Add("@description", customerModel.Description);
+                    parameters.Add("@create_date", customerModel.CreateDate);
+                    parameters.Add("@crud_type_code", "UPDATE");
+                    // Thực thi stored procedure
+                    var result = await connection.ExecuteAsync(
+                        "cus.sp_customer_crud",  // Tên của stored procedure
+                        parameters,
+                        commandType: CommandType.StoredProcedure
+                    );
+
+                    return result; // Trả về số bản ghi bị ảnh hưởng
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Lỗi khi gọi stored procedure: " + ex.Message);
+            }
+        }
+
+
 
         //Lấy tất cả
         public async Task<List<CustomerModel>> GetAllCustomersAsync()
@@ -135,9 +185,10 @@ namespace MyNhaTro.Repositories
            }
        }
 
+
+        #region // Cách Ánh xạ Model thủ công Có 01 Parameter 
         /*
-       //Có 01 Parameter
-       public async Task<string> GetCustomerCodeAsync(int customerType)
+        public async Task<string> GetCustomerCodeAsync(int customerType)
            {
                try
                {
@@ -168,9 +219,9 @@ namespace MyNhaTro.Repositories
                }
            }
 
-       //Nhiều parameter
-       public async Task<string> GetCustomerCodeAsync(CustomerCodeParams parameters)  //tạo model CustomerCodeParams
-       {
+        //Nhiều parameter
+        public async Task<string> GetCustomerCodeAsync(CustomerCodeParams parameters)  //tạo model CustomerCodeParams
+        {
            try
            {
                using (var connection = _context.Database.GetDbConnection())
@@ -196,11 +247,60 @@ namespace MyNhaTro.Repositories
            {
                throw new Exception("Lỗi tạo mã khách hàng: " + ex.Message);
            }
-       }
-           */
+        }
+        */
+        #endregion
+
+        public async Task<IEnumerable<CustomerModel>> GetSPTest()
+        {
+            var query = "SELECT * FROM cus.customer";
+                     
+            using (var connection = _context.Database.GetDbConnection())
+            {
+                if (connection.State == System.Data.ConnectionState.Closed)
+                    connection.Open();
+
+                var customers = await connection.QueryAsync<CustomerModel>(query);
+                return customers.ToList();
+            }
 
 
+            #region // Cách Ánh xạ Model thủ công
+            /*
+            using (var connection = _context.Database.GetDbConnection())
+            {
+                if (connection.State == System.Data.ConnectionState.Closed)
+                    connection.Open();
 
+                // Sử dụng QueryAsync với kết quả trả về là một danh sách các đối tượng (object[])
+                var customers = await connection.QueryAsync(query);
 
+                var customerModels = new List<CustomerModel>();
+
+                foreach (var row in customers)
+                {
+                    var customerModel = new CustomerModel();
+
+                    // Ánh xạ dữ liệu từ các trường
+                    customerModel.Id = row.id != null ? (int)row.id : 0;
+                    customerModel.FirstName = row.first_name?.ToString();
+                    customerModel.LastName = row.last_name?.ToString();
+
+                    // Chuyển ngaycap từ DateTime sang DateOnly
+                    if (row.ngaycap != null)
+                    {
+                        var dateTime = (DateTime)row.ngaycap;
+                        customerModel.Ngaycap = DateOnly.FromDateTime(dateTime);
+                    }
+
+                    customerModels.Add(customerModel);
+                }
+
+                return customerModels; // Trả về danh sách CustomerModel
+            }
+            */
+            #endregion
+        
+        }
     }
 }

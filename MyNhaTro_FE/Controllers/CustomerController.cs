@@ -181,6 +181,31 @@ namespace MyNhaTro_FE.Controllers
         }
 
 
+        public async Task<IActionResult> UpdateCustomerDetails(int id,CustomerModel CustomerModel)
+        {
+
+            CustomerModel.CreateDate = DateTime.Now;
+
+            using (var _httpClient = new HttpClient())
+            {
+                _httpClient.BaseAddress = new Uri(baseURL + "api/TCustomer/"); //"Khachhang/Getlist/"
+                _httpClient.DefaultRequestHeaders.Accept.Clear();
+                _httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                HttpResponseMessage getData = await _httpClient.PostAsJsonAsync("UpdateCustomerDetails", CustomerModel);
+
+                if (getData.IsSuccessStatusCode)
+                {
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    return View("ErrorPage");
+                }
+            }
+
+        }
+
         public IActionResult ErrorPage()
         {
             return View(); 

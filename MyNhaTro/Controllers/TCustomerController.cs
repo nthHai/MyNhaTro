@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using MyNhaTro.Contracts;
 using MyNhaTro.Models;
 using MyNhaTro.Repositories;
 
@@ -94,6 +95,7 @@ namespace MyNhaTro.Controllers
             }
         }
 
+        //Gọi store procedure
         [HttpPost("InsertCustomer")]
         public async Task<IActionResult> InsertCustomer(CustomerModel model)
         {
@@ -106,5 +108,32 @@ namespace MyNhaTro.Controllers
             return BadRequest("Không thể thêm khách hàng");
         }
 
+        //Gọi store procedure
+        [HttpPost("UpdateCustomerDetails")]
+        public async Task<IActionResult> UpdateCustomerDetails(int id, CustomerModel model)
+        {
+            var result = await _customerRepository.UpdateCustomerDetailsAsync(id,model);
+
+            if (result <= 0)
+            {
+                return Ok("Cập nhật thành công.");
+            }
+            return BadRequest("Không thể cập nhật thông tin khách hàng");
+        }
+
+        [HttpGet("GetSPTest")]
+        public async Task<IActionResult> GetSPTest()
+        {
+            try
+            {
+                var customers = await _customerRepository.GetSPTest();
+                return Ok(customers);
+            }
+            catch (Exception ex)
+            {
+                //log error
+                return StatusCode(500, ex.Message);
+            }
+        }
     }
 }
