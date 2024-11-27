@@ -3,6 +3,21 @@
 @using X.PagedList.Mvc
 @using X.PagedList.Mvc.Core
 
+@{
+    // Phương thức để hiển thị biểu tượng sắp xếp
+    Func<string, string, string> GetSortIcon = (currentSort, sortField) =>
+    {
+        if (currentSort == sortField)
+        {
+            return "<i class='bi bi-caret-up-fill'></i>"; // Sắp xếp tăng
+        }
+        else if (currentSort == sortField + "_desc")
+        {
+            return "<i class='bi bi-caret-down-fill'></i>"; // Sắp xếp giảm
+        }
+        return ""; // Nếu không có sắp xếp
+    };
+}
 
 <div class="container p-4 border">
     <div class="row pb-2">
@@ -11,9 +26,20 @@
            <h1>Danh sách khách hàng</h1>
         </div>
 
-        <div class=" col text-end p1-1">
-                <a asp-controller="Customer" asp-action="Create" class="btn btn-primary"><i class="bi bi-plus-square"></i>Thêm mới</a>
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <form method="get" action="@Url.Action("Index", "Customer")" class="d-flex">
+                <input type="text" name="searchKeyword" class="form-control me-2" 
+                       placeholder="Tìm kiếm theo mã, họ tên, số giấy tờ, điện thoại, nghề nghiệp" value="@ViewBag.CurrentFilter" />
+                        <button type="submit" class="btn btn-primary"><i class="bi bi-search"></i> Tìm kiếm</button>
+            </form>
         </div>
+
+    </div>
+        <div class="col text-start p1-1">
+                <a asp-controller="Customer" asp-action="Create" class="btn btn-success"><i class="bi bi-plus-square"></i>Thêm mới</a>
+        </div>
+    
     </div>
         <div class="tbl-wrapper">
             <div class="tbl-header">
@@ -37,21 +63,76 @@
                     <thead>
                         <tr>
                             <!--<th>@Html.DisplayNameFor(model => model.First().Id)</th> -->
-                            <th style="text-align:center">Chức năng</th>
+                            <th style="text-align:right">Chức năng</th>
                             <th>STT</th>
-                            <th>@Html.DisplayNameFor(model => model.First().CustomerCode)</th>
-                            <th>@Html.DisplayNameFor(model => model.First().FirstName)</th>
-                            <th>@Html.DisplayNameFor(model => model.First().LastName)</th>
-                            <th>@Html.DisplayNameFor(model => model.First().DayOfBirth)</th>
-                            <th>@Html.DisplayNameFor(model => model.First().IdentifyNumber)</th>
-                            <th>@Html.DisplayNameFor(model => model.First().MobilePhone)</th>
-                            <th>@Html.DisplayNameFor(model => model.First().PermanentAddress)</th>
-                            <th>@Html.DisplayNameFor(model => model.First().JobName)</th>
-                            <th>@Html.DisplayNameFor(model => model.First().WorkPlace)</th>
-                            <th>@Html.DisplayNameFor(model => model.First().DateJoin)</th>
-                            <th>@Html.DisplayNameFor(model => model.First().Description)</th>
-                            
+                            <th>
+                                <a asp-action="Index" asp-route-sortOrder="@ViewBag.CustomerCodeSortParm" asp-route-currentFilter="@ViewBag.CurrentFilter">
+                                    @Html.DisplayNameFor(model => model.First().CustomerCode)
+                                    @Html.Raw(GetSortIcon(ViewBag.CurrentSort, "CustomerCode"))
+                                </a>
+                            </th>
+                            <th>
+                                <a asp-action="Index" asp-route-sortOrder="@ViewBag.FirstNameSortParm" asp-route-currentFilter="@ViewBag.CurrentFilter">
+                                    @Html.DisplayNameFor(model => model.First().FirstName)
+                                    @Html.Raw(GetSortIcon(ViewBag.CurrentSort, "FirstName"))
+                                </a>
+                            </th>
+                            <th>
+                                <a asp-action="Index" asp-route-sortOrder="@ViewBag.LastNameSortParm" asp-route-currentFilter="@ViewBag.CurrentFilter">
+                                    @Html.DisplayNameFor(model => model.First().LastName)
+                                    @Html.Raw(GetSortIcon(ViewBag.CurrentSort, "LastName"))
+                                </a>
+                            </th>
+                            <th>
+                                <a asp-action="Index" asp-route-sortOrder="@ViewBag.DayOfBirthSortParm" asp-route-currentFilter="@ViewBag.CurrentFilter">
+                                    @Html.DisplayNameFor(model => model.First().DayOfBirth)
+                                @Html.Raw(GetSortIcon(ViewBag.CurrentSort, "DayOfBirth"))
+                                </a>
+                            </th>
+                            <th>
+                                <a asp-action="Index" asp-route-sortOrder="@ViewBag.IdentifyNumberSortParm" asp-route-currentFilter="@ViewBag.CurrentFilter">
+                                    @Html.DisplayNameFor(model => model.First().IdentifyNumber)
+                                @Html.Raw(GetSortIcon(ViewBag.CurrentSort, "IdentifyNumber"))
+                                </a>
+                            </th>
+                            <th>
+                                <a asp-action="Index" asp-route-sortOrder="@ViewBag.MobilePhoneSortParm" asp-route-currentFilter="@ViewBag.CurrentFilter">
+                                    @Html.DisplayNameFor(model => model.First().MobilePhone)
+                                @Html.Raw(GetSortIcon(ViewBag.CurrentSort, "MobilePhone"))
+                                </a>
+                            </th>
+                            <th>
+                                <a asp-action="Index" asp-route-sortOrder="@ViewBag.PermanentAddressSortParm" asp-route-currentFilter="@ViewBag.CurrentFilter">
+                                    @Html.DisplayNameFor(model => model.First().PermanentAddress)
+                                @Html.Raw(GetSortIcon(ViewBag.CurrentSort, "PermanentAddress"))
+                                </a>
+                            </th>
+                            <th>
+                                <a asp-action="Index" asp-route-sortOrder="@ViewBag.JobNameSortParm" asp-route-currentFilter="@ViewBag.CurrentFilter">
+                                    @Html.DisplayNameFor(model => model.First().JobName)
+                                @Html.Raw(GetSortIcon(ViewBag.CurrentSort, "JobName"))
+                                </a>
+                            </th>
+                            <th>
+                                <a asp-action="Index" asp-route-sortOrder="@ViewBag.WorkPlaceSortParm" asp-route-currentFilter="@ViewBag.CurrentFilter">
+                                    @Html.DisplayNameFor(model => model.First().WorkPlace)
+                                @Html.Raw(GetSortIcon(ViewBag.CurrentSort, "WorkPlace"))
+                                </a>
+                            </th>
+                            <th>
+                                <a asp-action="Index" asp-route-sortOrder="@ViewBag.DateJoinSortParm" asp-route-currentFilter="@ViewBag.CurrentFilter">
+                                    @Html.DisplayNameFor(model => model.First().DateJoin)
+                                @Html.Raw(GetSortIcon(ViewBag.CurrentSort, "DateJoin"))
+                                </a>
+                            </th>
+                            <th>
+                                <a asp-action="Index" asp-route-sortOrder="@ViewBag.DescriptionSortParm" asp-route-currentFilter="@ViewBag.CurrentFilter">
+                                    @Html.DisplayNameFor(model => model.First().Description)
+                                @Html.Raw(GetSortIcon(ViewBag.CurrentSort, "Description"))
+                                </a>
+                            </th>
                         </tr>
+                
                     </thead>
                 </table>
             </div>
@@ -120,7 +201,10 @@
 
         <div>
         @Html.PagedListPager(Model,
-                 page => Url.Action("Index", "Customer", new { page = page }),
+                 page => Url.Action("Index", "Customer", new 
+                     {
+                        page = page
+                     }),
                  new PagedListRenderOptions
                     {
                         DisplayLinkToPreviousPage = PagedListDisplayMode.IfNeeded,

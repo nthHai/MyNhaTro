@@ -15,6 +15,10 @@
 .tbl-wrapper {
     width: 100%;
     overflow-x: auto;
+    margin-top: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
 }
 
 
@@ -31,7 +35,7 @@ table {
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     margin: auto;
     margin-top: 0px;
-    margin-bottom: 20px;
+    margin-bottom: 1px;
     text-rendering: auto;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -60,8 +64,26 @@ table {
         letter-spacing: 1px;
         border-top: 1px solid #fff;
         border-bottom: 1px solid #ccc;
-       
+        
     }
+    
+        table th a {
+            color: #fff; /* Chữ trắng trong tiêu đề */
+            text-decoration: none; /* Loại bỏ gạch chân */
+        }
+        /* Khi đưa chuột vào thì vẫn giữ màu chữ trắng */
+        th a:hover {
+            color: white; /* Màu chữ vẫn là trắng khi hover */
+            text-decoration: underline; /* Gạch chân khi hover, nếu muốn */
+        }
+        th a i {
+            margin-left: 5px;
+            transition: transform 0.2s ease; /* Thêm hiệu ứng cho biểu tượng */
+        }
+        th a:hover i {
+            transform: scale(1.1); /* Tạo hiệu ứng phóng to cho biểu tượng khi hover */
+        }
+   
     table tr:nth-child(even) td {
         background-color: #f2f2f2;
     }
@@ -70,13 +92,22 @@ table {
         background-color: #ffedcc;
     }
 
-    table td {
-        background-color: #fff;
-        padding: 10px;
-        border-bottom: 1px solid #ccc;
-        font-weight: bold;
-    }
-   
+table td {
+    background-color: #fff;
+    padding: 5px;
+    border-bottom: 1px solid #ccc;
+    font-weight: bold;
+    box-shadow: none;
+}
+/* Không có nền cho hàng filter */
+.filter-row {
+    background-color: white; /* Không có màu nền cho filter row */
+    padding-bottom: 1px;
+    padding-top: 1px;
+    padding-left: 1px;
+    padding-right: 1px;
+}
+
 /*ĐỊNH DẠNG KIỂU PHÂN TRANG*/
 .pagination-lg {
     display: flex;
@@ -146,7 +177,7 @@ table {
 }
 
 .form-label {
-    font-weight: bold;
+    font-weight: bold; /*in đậm */
     font-size: 14px;
 }
 
@@ -155,14 +186,25 @@ table {
 }
 /*Kết thúc cài đặt form*/
 
+.btn-primary{
+    font-weight: bold;
+}
+.btn-success {
+    font-weight: bold;
+}
 /*Cấu hình nút nhấn chữ và icon cách ra*/
 .btn-primary i {
     margin-right: 10px; /* Điều chỉnh giá trị để có khoảng trắng mong muốn */
+    font-weight: bold;
 }
-
+.btn-success i {
+    margin-right: 15px;
+    font-weight: bold;
+}
 
 h1 {
     font-size: 30px;
+    color: #1c8975;
     font-family: 'Poppins', sans-serif;
     text-transform: uppercase;
     font-weight: bold;

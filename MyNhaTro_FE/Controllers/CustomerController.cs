@@ -9,6 +9,7 @@ using MyNhaTro.Data;
 using X.PagedList;
 using X.PagedList.Extensions;
 using Microsoft.EntityFrameworkCore;
+using MyNhaTroShared.DTOs;
 
 
 namespace MyNhaTro_FE.Controllers 
@@ -18,16 +19,23 @@ namespace MyNhaTro_FE.Controllers
        
 
         private string baseURL = "https://localhost:7155/";
-
-       
+        
         // Lấy danh sách khách hàng
-        public async Task<IActionResult> Index(int? page=1)
+        public async Task<IActionResult> Index(string sortOrder, string searchKeyword, int? page=1)
         {
-            int pageSize = 15; // Số lượng khách hàng mỗi trang
-            int pageNumber = (page ?? 1); // Nếu không có số trang thì mặc định là trang 1
+                     
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.CustomerCodeSortParm = sortOrder == "CustomerCode" ? "CustomerCode_desc" : "CustomerCode";
+            ViewBag.FirstNameSortParm = sortOrder == "FirstName" ? "FirstName_desc" : "FirstName";
+            ViewBag.LastNameSortParm = sortOrder == "LastName" ? "LastName_desc" : "LastName";
+            ViewBag.DayOfBirthSortParm = sortOrder == "DayOfBirth" ? "DayOfBirth_desc" : "DayOfBirth";
+
+            // Lưu từ khóa tìm kiếm vào ViewBag để hiển thị trên giao diện
+            ViewBag.CurrentFilter = searchKeyword;
 
             List<CustomerModel> lstCustomers = new List<CustomerModel>();
 
+            // Gọi API để lấy danh sách khách hàng
             using (var _httpClient = new HttpClient() )
             {
                 _httpClient.BaseAddress = new Uri(baseURL + "api/TCustomer/"); //"Khachhang/Getlist/"
@@ -47,12 +55,59 @@ namespace MyNhaTro_FE.Controllers
                     return View("ErrorPage");
                 }
             }
-            // Phân trang danh sách khách hàng
-            var pagedCustomers = lstCustomers.ToPagedList(pageNumber, pageSize);
 
+            // Lọc danh sách khách hàng theo từ khóa tìm kiếm
+            if (!string.IsNullOrEmpty(searchKeyword))
+            {
+                lstCustomers = lstCustomers!.Where(c =>
+                    (c.CustomerCode != null && c.CustomerCode.Contains(searchKeyword, StringComparison.OrdinalIgnoreCase)) ||
+                    (c.FirstName != null && c.FirstName.Contains(searchKeyword, StringComparison.OrdinalIgnoreCase)) ||
+                    (c.LastName != null && c.LastName.Contains(searchKeyword, StringComparison.OrdinalIgnoreCase)) ||
+                    (c.IdentifyNumber != null && c.IdentifyNumber.Contains(searchKeyword, StringComparison.OrdinalIgnoreCase)) ||
+                    (c.MobilePhone != null && c.MobilePhone.Contains(searchKeyword, StringComparison.OrdinalIgnoreCase)) ||
+                    (c.JobName != null && c.JobName.Contains(searchKeyword, StringComparison.OrdinalIgnoreCase))
+                ).ToList();
+            }
+
+            // Sắp xếp danh sách khách hàng theo sortOrder
+            switch (sortOrder)
+            {
+                case "CustomerCode_desc":
+                    lstCustomers = lstCustomers!.OrderByDescending(c => c.CustomerCode).ToList();
+                    break;
+                case "FirstName":
+                    lstCustomers = lstCustomers!.OrderBy(c => c.FirstName).ToList();
+                    break;
+                case "FirstName_desc":
+                    lstCustomers = lstCustomers!.OrderByDescending(c => c.FirstName).ToList();
+                    break;
+                case "LastName":
+                    lstCustomers = lstCustomers!.OrderBy(c => c.LastName).ToList();
+                    break;
+                case "LastName_desc":
+                    lstCustomers = lstCustomers!.OrderByDescending(c => c.LastName).ToList();
+                    break;
+                case "DayOfBirth":
+                    lstCustomers = lstCustomers!.OrderBy(c => c.DayOfBirth).ToList();
+                    break;
+                case "DayOfBirth_desc":
+                    lstCustomers = lstCustomers!.OrderByDescending(c => c.DayOfBirth).ToList();
+                    break;
+                default:
+                    lstCustomers = lstCustomers!.OrderBy(c => c.CustomerCode).ToList();
+                    break;
+            }
+
+
+            // Phân trang danh sách khách hàng
+            int pageSize = 15; // Số lượng khách hàng mỗi trang
+            int pageNumber = (page ?? 1); // Nếu không có số trang thì mặc định là trang 1
+
+            
+            var pagedCustomers = lstCustomers.ToPagedList(pageNumber, pageSize);
             return View(pagedCustomers);
 
-         }
+        }
 
         /*
        // Tạo mới khách hàng
