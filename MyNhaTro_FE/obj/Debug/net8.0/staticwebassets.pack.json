@@ -245,6 +245,18 @@
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
+      "Id": "C:\\Users\\haing\\source\\repos\\MyNhaTro\\MyNhaTro_FE\\wwwroot\\libs\\devextreme\\bin\\bundler-init.js",
+      "PackagePath": "staticwebassets\\libs\\devextreme\\bin\\bundler-init.js"
+    },
+    {
+      "Id": "C:\\Users\\haing\\source\\repos\\MyNhaTro\\MyNhaTro_FE\\wwwroot\\libs\\devextreme\\bin\\bundler.js",
+      "PackagePath": "staticwebassets\\libs\\devextreme\\bin\\bundler.js"
+    },
+    {
+      "Id": "C:\\Users\\haing\\source\\repos\\MyNhaTro\\MyNhaTro_FE\\wwwroot\\libs\\devextreme\\bin\\webpack.config.js",
+      "PackagePath": "staticwebassets\\libs\\devextreme\\bin\\webpack.config.js"
+    },
+    {
       "Id": "C:\\Users\\haing\\source\\repos\\MyNhaTro\\MyNhaTro_FE\\wwwroot\\template2\\LICENSE",
       "PackagePath": "staticwebassets\\template2"
     },
