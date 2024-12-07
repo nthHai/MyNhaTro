@@ -10,6 +10,8 @@ using X.PagedList;
 using X.PagedList.Extensions;
 using Microsoft.EntityFrameworkCore;
 using MyNhaTroShared.DTOs;
+using DevExpress.XtraReports.UI;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 
 namespace MyNhaTro_FE.Controllers 
@@ -259,6 +261,11 @@ namespace MyNhaTro_FE.Controllers
                 }
             }
 
+        }
+
+        public IActionResult TestReport()
+        {
+            return View();
         }
 
         public IActionResult ErrorPage()

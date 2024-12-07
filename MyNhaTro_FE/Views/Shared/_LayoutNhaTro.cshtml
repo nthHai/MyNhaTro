@@ -3,6 +3,10 @@
 <html>
 
 <head>
+    <link rel="stylesheet" href="~/css/thirdparty.bundle.css" />
+    <link href="node_modules/devextreme/dist/css/dx.light.css" rel="stylesheet" />
+    <link href="node_modules/devexpress-reporting/dist/css/dx-webdocumentviewer.css" rel="stylesheet" />
+
     <!-- basic -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -35,6 +39,11 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/MyNhaTro_FE.styles.css" asp-append-version="true" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    
+    <script src="node_modules/devextreme/dist/js/dx.all.js"></script>
+    <script src="node_modules/devexpress-reporting/dist/dx-webdocumentviewer.js"></script>
+    <script src="~/js/thirdparty.bundle.js"></script>
 
 </head>
 
@@ -76,6 +85,7 @@
                         </li>
 
                         <li><a asp-controller="Customer" asp-action="Index"><i class="fa fa-clock-o orange_color"></i> <span>Khách hàng</span></a></li>
+                        
 
                         <li>
                             <a href="#element" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-diamond purple_color"></i> <span>Elements</span></a>

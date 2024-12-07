@@ -1,0 +1,13 @@
+{
+  "version": "1.0.0",
+  "name": "asp.net",
+  "private": true,
+  "devDependencies": {
+    "bootstrap": "^4.6.2",
+    "devextreme": "22.2.14"
+  },
+  "dependencies": {
+    "@devexpress/analytics-core": "22.2.14",
+    "devexpress-reporting": "22.2.14"
+  }
+}

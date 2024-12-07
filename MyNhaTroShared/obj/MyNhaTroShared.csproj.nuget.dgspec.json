@@ -55,6 +55,10 @@
               "target": "Package",
               "version": "[2.1.35, )"
             },
+            "DevExpress.AspNetCore.Reporting": {
+              "target": "Package",
+              "version": "[22.2.3, )"
+            },
             "X.PagedList.Mvc.Core": {
               "target": "Package",
               "version": "[10.5.7, )"
